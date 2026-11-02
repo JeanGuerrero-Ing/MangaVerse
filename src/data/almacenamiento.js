@@ -1,5 +1,13 @@
 import { mangas } from './mangas';
 
+export const generosIniciales = [
+    { valor: 'shonen', etiqueta: 'Shonen' },
+    { valor: 'seinen', etiqueta: 'Seinen' },
+    { valor: 'shojo', etiqueta: 'Shojo' },
+    { valor: 'romance', etiqueta: 'Romance' },
+    { valor: 'terror', etiqueta: 'Terror' },
+];
+
 export function leerDatos(clave, valorInicial) {
     const guardado = localStorage.getItem(clave);
     return guardado ? JSON.parse(guardado) : valorInicial;
@@ -7,6 +15,18 @@ export function leerDatos(clave, valorInicial) {
 
 export function guardarDatos(clave, valor) {
     localStorage.setItem(clave, JSON.stringify(valor));
+}
+
+export function obtenerGeneros() {
+    const generosGuardados = leerDatos('generosMangaVerse', []);
+    const generos = [...generosIniciales, ...(Array.isArray(generosGuardados) ? generosGuardados : [])];
+    const valoresIncluidos = new Set();
+
+    return generos.filter((genero) => {
+        if (!genero?.valor || !genero?.etiqueta || valoresIncluidos.has(genero.valor)) return false;
+        valoresIncluidos.add(genero.valor);
+        return true;
+    });
 }
 
 export function formatearPrecio(precio) {

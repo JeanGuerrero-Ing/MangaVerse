@@ -1,5 +1,7 @@
+import { Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { formatearPrecio, leerDatos, obtenerProductos } from '../data/almacenamiento';
+import { crearReporteInventarioVentas } from '../data/reportes';
 import CerrarSesion from '../componentes/CerrarSesion';
 import PrecioProducto from '../componentes/PrecioProducto';
 import '../css/estilos.css'
@@ -12,6 +14,18 @@ function AdminDashboard() {
     const ventas = pedidos.reduce((total, pedido) => total + Number(pedido.total || 0), 0);
     const pendientes = pedidos.filter((pedido) => pedido.estado !== 'Completado').length;
     const stock = productos.reduce((total, producto) => total + Number(producto.stock || 0), 0);
+    const descargarReporte = () => {
+        const contenido = crearReporteInventarioVentas(productos, pedidos);
+        const archivo = new Blob([contenido], { type: 'text/csv;charset=utf-8' });
+        const url = URL.createObjectURL(archivo);
+        const enlace = document.createElement('a');
+        enlace.href = url;
+        enlace.download = `reporte-inventario-ventas-${new Date().toISOString().slice(0, 10)}.csv`;
+        document.body.appendChild(enlace);
+        enlace.click();
+        enlace.remove();
+        URL.revokeObjectURL(url);
+    };
 
     return (
         <>
@@ -38,6 +52,9 @@ function AdminDashboard() {
                         <div className="admin-header-seccion">
                             <h2>Bienvenido al Panel de Control</h2>
                             <p>Selecciona una opción del menú lateral para gestionar la tienda.</p>
+                            <Button type="button" variant="success" onClick={descargarReporte}>
+                                Descargar reporte de inventario y ventas
+                            </Button>
                         </div>
 
                         {/* Resumen de métricas */}

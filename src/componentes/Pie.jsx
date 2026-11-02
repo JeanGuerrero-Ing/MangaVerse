@@ -11,6 +11,7 @@ function Pie() {
                     <ul className="footer-nav">
                         <li><a href="/">Inicio</a></li>
                         <li><a href="/catalogo">Catalogo</a></li>
+                        <li><a href="/blog">Blog</a></li>
                         <li><a href="/quienes-somos">Quienes somos</a></li>
                         <li><a href="/login">Mi cuenta</a></li>
                         <li><a href="/contacto">Contacto</a></li>

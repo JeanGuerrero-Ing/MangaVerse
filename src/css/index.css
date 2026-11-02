@@ -15,6 +15,11 @@
     font-weight: bold;
 }
 
+.titulo-reviews span {
+    width: 100%;
+    text-align: center;
+}
+
 
 /* ===== Secciones con fondo gris (mismo estilo base) ===== */
 .seccion-mangas-nuevos,

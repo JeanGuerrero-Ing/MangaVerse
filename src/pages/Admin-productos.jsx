@@ -1,11 +1,28 @@
 import { useState } from 'react';
 import { Alert, Button, Form, Modal, Table } from 'react-bootstrap';
-import { calcularPrecioOferta, obtenerProductos, guardarDatos } from '../data/almacenamiento';
+import { calcularPrecioOferta, obtenerGeneros, obtenerProductos, guardarDatos } from '../data/almacenamiento';
 import CerrarSesion from '../componentes/CerrarSesion';
 import PrecioProducto from '../componentes/PrecioProducto';
 import '../css/estilos.css'
 import '../css/menu.css'
 import '../css/admin.css'
+
+const TAMANO_MAXIMO_IMAGEN = 1024 * 1024;
+
+function leerImagenComoDataUrl(archivo) {
+    return new Promise((resolver, rechazar) => {
+        const lector = new FileReader();
+        lector.onload = () => {
+            if (typeof lector.result !== 'string') {
+                rechazar(new Error('No se pudo procesar la imagen seleccionada.'));
+                return;
+            }
+            resolver(lector.result);
+        };
+        lector.onerror = () => rechazar(new Error('No se pudo leer la imagen seleccionada.'));
+        lector.readAsDataURL(archivo);
+    });
+}
 
 function escaparCampoCsv(valor) {
     const texto = String(valor);
@@ -15,39 +32,122 @@ function escaparCampoCsv(valor) {
 
 function AdminProductos() {
     const [productos, setProductos] = useState(() => obtenerProductos());
+    const [generos, setGeneros] = useState(() => obtenerGeneros());
     const [productoActual, setProductoActual] = useState(null);
     const [mensaje, setMensaje] = useState('');
     const [ofertaActiva, setOfertaActiva] = useState(false);
+    const [errorImagen, setErrorImagen] = useState('');
+    const [generoSeleccionado, setGeneroSeleccionado] = useState('');
+    const [mostrarFormularioGenero, setMostrarFormularioGenero] = useState(false);
+    const [nombreNuevoGenero, setNombreNuevoGenero] = useState('');
+    const [errorGenero, setErrorGenero] = useState('');
     const guardarProductos = (nuevosProductos) => {
-        setProductos(nuevosProductos);
         guardarDatos('productosMangaVerse', nuevosProductos);
+        setProductos(nuevosProductos);
     };
     const abrirNuevo = () => {
         setOfertaActiva(false);
+        setErrorImagen('');
+        setGeneroSeleccionado('');
+        setMostrarFormularioGenero(false);
+        setNombreNuevoGenero('');
+        setErrorGenero('');
         setProductoActual({ titulo: '', precio: '', stock: '', imagen: '' });
     };
     const abrirEdicion = (producto) => {
         setOfertaActiva(Boolean(producto.ofertaActiva));
+        setErrorImagen('');
+        setGeneroSeleccionado(producto.genero || '');
+        setMostrarFormularioGenero(false);
+        setNombreNuevoGenero('');
+        setErrorGenero('');
         setProductoActual(producto);
     };
-    const guardarProducto = (evento) => {
+    const agregarGenero = () => {
+        const etiqueta = nombreNuevoGenero.trim();
+        if (!etiqueta) {
+            setErrorGenero('Escribe el nombre del género.');
+            return;
+        }
+        if (generos.some((genero) =>
+            genero.etiqueta.toLocaleLowerCase('es') === etiqueta.toLocaleLowerCase('es'),
+        )) {
+            setErrorGenero('Ese género ya existe.');
+            return;
+        }
+
+        const valor = etiqueta.normalize('NFD')
+            .replace(/[\u0300-\u036f]/g, '')
+            .toLocaleLowerCase('es')
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-|-$/g, '');
+        if (!valor || generos.some((genero) => genero.valor === valor)) {
+            setErrorGenero('No se pudo crear un identificador único para ese género.');
+            return;
+        }
+
+        const nuevosGeneros = [...generos, { valor, etiqueta }];
+        guardarDatos('generosMangaVerse', nuevosGeneros);
+        setGeneros(nuevosGeneros);
+        setGeneroSeleccionado(valor);
+        setNombreNuevoGenero('');
+        setMostrarFormularioGenero(false);
+        setErrorGenero('');
+    };
+    const guardarProducto = async (evento) => {
         evento.preventDefault();
         const datos = new FormData(evento.currentTarget);
+        const archivo = evento.currentTarget.elements.namedItem('imagen').files[0];
+        let imagen = productoActual.imagen || productoActual.img || '';
+
+        if (archivo && archivo.size > 0) {
+            if (!archivo.type.startsWith('image/')) {
+                setErrorImagen('Selecciona un archivo de imagen válido.');
+                return;
+            }
+            if (archivo.size > TAMANO_MAXIMO_IMAGEN) {
+                setErrorImagen('La imagen debe pesar 1 MB o menos.');
+                return;
+            }
+            try {
+                imagen = await leerImagenComoDataUrl(archivo);
+            } catch (error) {
+                if (error instanceof Error) {
+                    setErrorImagen(error.message);
+                    return;
+                }
+                throw error;
+            }
+        }
+        if (!imagen) {
+            setErrorImagen('Selecciona una imagen para el manga.');
+            return;
+        }
+
         const producto = {
             ...productoActual,
             id: productoActual.id ?? Date.now(),
             titulo: datos.get('titulo').trim(),
             precio: Number(datos.get('precio')),
             stock: Number(datos.get('stock')),
+            genero: generoSeleccionado,
             ofertaActiva,
             descuentoPorcentaje: ofertaActiva ? Number(datos.get('descuentoPorcentaje')) : 0,
-            img: datos.get('imagen').trim(),
-            imagen: datos.get('imagen').trim(),
+            img: undefined,
+            imagen,
         };
         const nuevosProductos = productoActual.id
             ? productos.map((item) => item.id === productoActual.id ? producto : item)
             : [...productos, producto];
-        guardarProductos(nuevosProductos);
+        try {
+            guardarProductos(nuevosProductos);
+        } catch (error) {
+            if (error instanceof DOMException && error.name === 'QuotaExceededError') {
+                setErrorImagen('No hay espacio disponible para guardar la imagen. Elige una imagen más pequeña.');
+                return;
+            }
+            throw error;
+        }
         setProductoActual(null);
         setMensaje('Producto guardado.');
     };
@@ -158,9 +258,51 @@ function AdminProductos() {
                 <Modal.Header closeButton><Modal.Title>{productoActual?.id ? 'Editar manga' : 'Agregar manga'}</Modal.Title></Modal.Header>
                 <Form onSubmit={guardarProducto}>
                     <Modal.Body>
+                        {errorImagen && <Alert variant="danger" role="alert">{errorImagen}</Alert>}
                         <Form.Group className="mb-3" controlId="input-titulo">
                             <Form.Label>Título</Form.Label>
                             <Form.Control name="titulo" defaultValue={productoActual?.titulo || ''} required />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="input-genero">
+                            <Form.Label>Género</Form.Label>
+                            <Form.Select
+                                name="genero"
+                                value={generoSeleccionado}
+                                onChange={(evento) => setGeneroSeleccionado(evento.target.value)}
+                                required
+                            >
+                                <option value="" disabled>Selecciona un género</option>
+                                {generos.map((genero) => (
+                                    <option key={genero.valor} value={genero.valor}>{genero.etiqueta}</option>
+                                ))}
+                            </Form.Select>
+                            <Button
+                                type="button"
+                                variant="outline-secondary"
+                                className="mt-2"
+                                onClick={() => {
+                                    setMostrarFormularioGenero(!mostrarFormularioGenero);
+                                    setNombreNuevoGenero('');
+                                    setErrorGenero('');
+                                }}
+                            >
+                                Agregar nuevo género
+                            </Button>
+                            {mostrarFormularioGenero && (
+                                <div className="mt-2">
+                                    <Form.Label htmlFor="input-nuevo-genero">Nombre del nuevo género</Form.Label>
+                                    <div className="d-flex gap-2">
+                                        <Form.Control
+                                            id="input-nuevo-genero"
+                                            value={nombreNuevoGenero}
+                                            onChange={(evento) => setNombreNuevoGenero(evento.target.value)}
+                                            maxLength={40}
+                                        />
+                                        <Button type="button" variant="dark" onClick={agregarGenero}>Guardar género</Button>
+                                    </div>
+                                    {errorGenero && <Form.Text className="text-danger" role="alert">{errorGenero}</Form.Text>}
+                                </div>
+                            )}
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="input-precio">
                             <Form.Label>Precio</Form.Label>
@@ -194,8 +336,26 @@ function AdminProductos() {
                             <Form.Text className="text-muted">Ingresa un porcentaje entre 1 y 99.</Form.Text>
                         </Form.Group>
                         <Form.Group controlId="input-imagen">
-                            <Form.Label>Ruta de imagen</Form.Label>
-                            <Form.Control name="imagen" defaultValue={productoActual?.imagen || productoActual?.img || ''} required />
+                            <Form.Label>Imagen del manga</Form.Label>
+                            <Form.Control
+                                name="imagen"
+                                type="file"
+                                accept="image/*"
+                                onChange={() => setErrorImagen('')}
+                            />
+                            <Form.Text className="text-muted">
+                                Busca una imagen en tu dispositivo (máximo 1 MB).
+                                {productoActual?.imagen || productoActual?.img ? ' Si no seleccionas otra, se conservará la imagen actual.' : ''}
+                            </Form.Text>
+                            {(productoActual?.imagen || productoActual?.img) && (
+                                <div className="mt-2">
+                                    <img
+                                        src={productoActual.imagen || productoActual.img}
+                                        alt={`Imagen actual de ${productoActual.titulo}`}
+                                        className="img-tabla-manga"
+                                    />
+                                </div>
+                            )}
                         </Form.Group>
                     </Modal.Body>
                     <Modal.Footer>

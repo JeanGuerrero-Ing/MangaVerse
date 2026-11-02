@@ -30,6 +30,37 @@ describe('Catalogo', () => {
         expect(contarTarjetas()).toBe(esperados);
     });
 
+    it('incluye géneros agregados desde el administrador en el filtro', async () => {
+        const usuario = userEvent.setup();
+        localStorage.setItem('generosMangaVerse', JSON.stringify([
+            { valor: 'josei', etiqueta: 'Josei' },
+        ]));
+        localStorage.setItem('productosMangaVerse', JSON.stringify([
+            {
+                id: 100,
+                titulo: 'Manga Josei',
+                genero: 'josei',
+                precio: 12000,
+                stock: 5,
+                img: '/josei.jpg',
+            },
+            {
+                id: 101,
+                titulo: 'Manga Shonen',
+                genero: 'shonen',
+                precio: 10000,
+                stock: 5,
+                img: '/shonen.jpg',
+            },
+        ]));
+        renderCatalogo();
+
+        await usuario.selectOptions(screen.getByLabelText('Género'), 'josei');
+
+        expect(contarTarjetas()).toBe(1);
+        expect(screen.getByRole('heading', { name: 'Manga Josei' })).toBeInTheDocument();
+    });
+
     it('filtra por editorial', async () => {
         const usuario = userEvent.setup();
         renderCatalogo();

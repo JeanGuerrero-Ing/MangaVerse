@@ -235,7 +235,7 @@ function Home() {
 
             {/* Opiniones */}
             <section>
-                <h1 className="titulo-seccion"><span>Reviews de nuestros clientes</span></h1>
+                <h1 className="titulo-seccion titulo-reviews"><span>Reviews de nuestros clientes</span></h1>
             </section>
 
             <section className="seccion-testimonios">

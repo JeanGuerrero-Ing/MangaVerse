@@ -23,6 +23,7 @@ import MiCuentaPedidos from './pages/Mi-cuenta-pedidos'
 import MiCuenta from './pages/Mi-cuenta'
 import QuienesSomos from './pages/Quienes-somos'
 import Registro from './pages/Registro'
+import Blog from './pages/Blog'
 
 import { Routes, Route } from 'react-router-dom'
 
@@ -39,6 +40,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/contacto" element={<Contacto />} />
+      <Route path="/blog" element={<Blog />} />
       <Route path="/admin-clientes" element={<RutaPrivada rol="admin"><AdminClientes /></RutaPrivada>} />
       <Route path="/admin-dscto" element={<RutaPrivada rol="admin"><AdminDscto /></RutaPrivada>} />
       <Route path="/admin-pedidos" element={<RutaPrivada rol="admin"><AdminPedidos /></RutaPrivada>} />

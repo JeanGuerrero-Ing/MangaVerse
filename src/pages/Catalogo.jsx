@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { useSearchParams } from 'react-router-dom';
-import { agregarAlCarrito, calcularPrecioOferta, obtenerProductos } from '../data/almacenamiento';
+import { agregarAlCarrito, calcularPrecioOferta, obtenerGeneros, obtenerProductos } from '../data/almacenamiento';
 import FiltroCatalogo from '../componentes/FiltroCatalogo';
 import MensajeVacio from '../componentes/MensajeVacio';
 import TarjetaManga from '../componentes/TarjetaManga';
@@ -40,11 +40,7 @@ function Catalogo() {
 
     const opcionesGenero = [
         { valor: '', etiqueta: 'Todos los géneros' },
-        { valor: 'shonen', etiqueta: 'Shonen' },
-        { valor: 'seinen', etiqueta: 'Seinen' },
-        { valor: 'shojo', etiqueta: 'Shojo' },
-        { valor: 'romance', etiqueta: 'Romance' },
-        { valor: 'terror', etiqueta: 'Terror' },
+        ...obtenerGeneros(),
     ];
     const opcionesEditorial = [
         { valor: '', etiqueta: 'Todas las editoriales' },

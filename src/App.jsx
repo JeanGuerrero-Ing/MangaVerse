@@ -24,6 +24,8 @@ import MiCuenta from './pages/Mi-cuenta'
 import QuienesSomos from './pages/Quienes-somos'
 import Registro from './pages/Registro'
 import Blog from './pages/Blog'
+import Checkout from './pages/Checkout'
+import CompraError from './pages/Compra-error'
 
 import { Routes, Route } from 'react-router-dom'
 
@@ -47,6 +49,8 @@ function App() {
       <Route path="/admin-productos" element={<RutaPrivada rol="admin"><AdminProductos /></RutaPrivada>} />
       <Route path="/admin-dashboard" element={<RutaPrivada rol="admin"><AdminDashboard /></RutaPrivada>} />
       <Route path="/carrito" element={<Carrito />} />
+      <Route path="/checkout" element={<Checkout />} />
+      <Route path="/compra-error" element={<CompraError />} />
       <Route path="/catalogo" element={<Catalogo />} />
       <Route path="/compra-exitosa" element={<CompraExitosa />} />
       <Route path="/login" element={<Login />} />

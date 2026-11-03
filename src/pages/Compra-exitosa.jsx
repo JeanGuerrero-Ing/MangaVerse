@@ -43,7 +43,7 @@ function CompraExitosa() {
                         </div>
                         <div className="exito-detalle-linea">
                             <span>Método de pago:</span>
-                            <span>Webpay</span>
+                            <span>Tarjeta de prueba</span>
                         </div>
                     </div>
 

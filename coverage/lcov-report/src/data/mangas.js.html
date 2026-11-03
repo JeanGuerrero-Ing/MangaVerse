@@ -1,0 +1,141 @@
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Code coverage report for src/data/mangas.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="../../theme.js"></script>
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+    
+<body>
+<div class='wrapper'>
+    <div class='pad1'>
+        
+        <label class="theme-select quiet">
+            Theme
+            <select id="themeSelect" autocomplete="off">
+                <option value="light">Light</option>
+                <option value="dark">Dark</option>
+                <option value="legacy">Legacy</option>
+            </select>
+        </label>
+
+        <h1><a href="../../index.html">All files</a> / <a href="index.html">src/data</a> mangas.js</h1>
+        <div class='clearfix'>
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Statements</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Branches</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Functions</span>
+                <span class='fraction'>0/0</span>
+            </div>
+        
+            
+            <div class='fl pad1y space-right2'>
+                <span class="strong">100% </span>
+                <span class="quiet">Lines</span>
+                <span class='fraction'>1/1</span>
+            </div>
+        
+            
+        </div>
+        <p class="quiet">
+            Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
+        </p>
+        <template id="filterTemplate">
+            <div class="quiet">
+                Filter:
+                <input type="search" id="fileSearch">
+            </div>
+        </template>
+    </div>
+    <div class='status-line high'></div>
+    <pre><table class="coverage">
+<tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
+<a name='L2'></a><a href='#L2'>2</a>
+<a name='L3'></a><a href='#L3'>3</a>
+<a name='L4'></a><a href='#L4'>4</a>
+<a name='L5'></a><a href='#L5'>5</a>
+<a name='L6'></a><a href='#L6'>6</a>
+<a name='L7'></a><a href='#L7'>7</a>
+<a name='L8'></a><a href='#L8'>8</a>
+<a name='L9'></a><a href='#L9'>9</a>
+<a name='L10'></a><a href='#L10'>10</a>
+<a name='L11'></a><a href='#L11'>11</a>
+<a name='L12'></a><a href='#L12'>12</a>
+<a name='L13'></a><a href='#L13'>13</a>
+<a name='L14'></a><a href='#L14'>14</a>
+<a name='L15'></a><a href='#L15'>15</a>
+<a name='L16'></a><a href='#L16'>16</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">export const mangas = [
+    { id: 1,  titulo: 'Golden Kamuy 01',               genero: 'seinen', editorial: 'ovni',   autor: 'satoru-noda',         precio: 12990, img: '/img/Mangas/Golden kamuy 01.png' },
+    { id: 2,  titulo: 'Jujutsu Kaisen 29',             genero: 'shonen', editorial: 'panini', autor: 'gege-akutami',        precio: 15990, img: '/img/Mangas/Jujutsu kaisen 29.jpg' },
+    { id: 3,  titulo: 'Chainsaw Man 24',               genero: 'shonen', editorial: 'norma',  autor: 'tatsuki-fujimoto',    precio: 13490, img: '/img/Mangas/Chainsaw man 24.png' },
+    { id: 4,  titulo: 'One piece 59',                  genero: 'shonen', editorial: 'ivrea',  autor: 'eiichiro-oda',        precio: 9990,  img: '/img/Mangas/One piece 59.jpg' },
+    { id: 5,  titulo: 'Inuyasha 25',                   genero: 'shonen', editorial: 'ivrea',  autor: 'rumiko-takahashi',    precio: 11990, img: '/img/Mangas/Inuyasha 25.jpg' },
+    { id: 6,  titulo: 'Berserk 01',                    genero: 'seinen', editorial: 'panini', autor: 'kentaro-miura',       precio: 24990, img: '/img/Mangas/Berserk 01.jpg' },
+    { id: 7,  titulo: 'Blue lock 11',                  genero: 'shonen', editorial: 'ivrea',  autor: 'muneyuki-kaneshiro',  precio: 12490, img: '/img/Mangas/Blue lock 11.jpg' },
+    { id: 8,  titulo: 'Mashle 17',                     genero: 'shonen', editorial: 'panini', autor: 'hajime-komoto',       precio: 10990, img: '/img/Mangas/Mashle 17.jpg' },
+    { id: 9,  titulo: 'Shingeki no kyojin 22',         genero: 'seinen', editorial: 'ovni',   autor: 'hajime-isayama',      precio: 17990, img: '/img/Mangas/Shingeki 22.jpg' },
+    { id: 10, titulo: 'Saint Seiya: The lost canva 01', genero: 'shonen', editorial: 'panini', autor: 'masami-kurumada',     precio: 11490, img: '/img/Mangas/Saint seya the lost canva 01.jpg' },
+    { id: 11, titulo: 'Rurouni kenshin 12',            genero: 'shonen', editorial: 'norma',  autor: 'nobuhiro-watsuki',    precio: 9490,  img: '/img/Mangas/Rurouni kenshin 12.jpg' },
+    { id: 12, titulo: 'Demon slayer 08',               genero: 'shonen', editorial: 'ivrea',  autor: 'koyoharu-gotouge',    precio: 10990, img: '/img/Mangas/Demon slayer 08.png' },
+    { id: 13, titulo: 'My hero academia 05',           genero: 'shonen', editorial: 'ivrea',  autor: 'kohei-horikoshi',     precio: 9990,  img: '/img/Mangas/My hero academia 05.jpg' },
+    { id: 14, titulo: 'Blue period 06',                genero: 'seinen', editorial: 'panini', autor: 'tsubasa-yamaguchi',   precio: 14990, img: '/img/Mangas/Blue period 06.jpg' },
+];</pre></td></tr></table></pre>
+
+                <div class='push'></div><!-- for sticky footer -->
+            </div><!-- /wrapper -->
+            <div class='footer quiet pad2 space-top1 center small'>
+                Code coverage generated by
+                <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
+                at 2026-11-03T14:21:56.412Z
+            </div>
+        <script src="../../prettify.js"></script>
+        <script>
+            window.onload = function () {
+                prettyPrint();
+            };
+        </script>
+        <script src="../../sorter.js"></script>
+        <script src="../../block-navigation.js"></script>
+    </body>
+</html>
+    

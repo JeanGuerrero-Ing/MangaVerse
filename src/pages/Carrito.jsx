@@ -3,7 +3,7 @@ import { Alert, Button, Card, Col, Container, Form, Row } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import ResumenCompra from '../componentes/ResumenCompra';
 import TituloSeccion from '../componentes/TituloSeccion';
-import { formatearPrecio, guardarDatos, leerDatos, obtenerProductos } from '../data/almacenamiento';
+import { formatearPrecio, guardarDatos, leerDatos } from '../data/almacenamiento';
 import '../css/estilos.css'
 import '../css/menu.css'
 import '../css/carrito.css'
@@ -17,7 +17,6 @@ function Carrito() {
     const [cuponActivo, setCuponActivo] = useState(() =>
         leerDatos('cuponActivoMangaVerse', null),
     );
-    const [region, setRegion] = useState('');
     const [mensaje, setMensaje] = useState('');
     const [tipoMensaje, setTipoMensaje] = useState('danger');
     const subtotal = carrito.reduce((suma, item) => suma + item.precio * item.cantidad, 0);
@@ -63,42 +62,13 @@ function Carrito() {
         setTipoMensaje('danger');
     };
 
-    const finalizarCompra = () => {
+    const procederAlCheckout = () => {
         if (carrito.length === 0) {
             setMensaje('Tu carrito está vacío. Agrega mangas antes de pagar.');
             setTipoMensaje('warning');
             return;
         }
-
-        const productos = obtenerProductos();
-        const productosActualizados = productos.map((producto) => {
-            const comprado = carrito.find((item) =>
-                item.nombre.toLocaleLowerCase('es') === producto.titulo.toLocaleLowerCase('es'),
-            );
-            return comprado
-                ? { ...producto, stock: Math.max((producto.stock || 0) - comprado.cantidad, 0) }
-                : producto;
-        });
-        guardarDatos('productosMangaVerse', productosActualizados);
-
-        const pedidos = leerDatos('pedidosMangaVerse', []);
-        const nuevoPedido = {
-            id: `#${pedidos.length}`,
-            usuario: localStorage.getItem('usuarioMangaVerse') || 'Invitado',
-            productos: carrito,
-            subtotal,
-            envio,
-            descuento,
-            total: Math.max(subtotal + envio - descuento, 0),
-            region,
-            fecha: new Date().toLocaleDateString('es-CL'),
-            estado: 'Completado',
-        };
-        guardarDatos('pedidosMangaVerse', [...pedidos, nuevoPedido]);
-        guardarDatos('ultimoPedidoMangaVerse', nuevoPedido);
-        guardarDatos('carritoMangaVerse', []);
-        localStorage.removeItem('cuponActivoMangaVerse');
-        navegar('/compra-exitosa');
+        navegar('/checkout');
     };
 
     return (
@@ -170,31 +140,9 @@ function Carrito() {
                                             </Button>
                                         </div>
                                     </Form.Group>
-                                    <Form.Group className="region-container" controlId="select-region">
-                                        <Form.Label>Región</Form.Label>
-                                        <Form.Select value={region} onChange={(evento) => setRegion(evento.target.value)}>
-                                            <option value="" disabled>Seleccione una región</option>
-                                            <option value="arica">Región de Arica y Parinacota</option>
-                                            <option value="tarapaca">Región de Tarapacá</option>
-                                            <option value="antofagasta">Región de Antofagasta</option>
-                                            <option value="atacama">Región de Atacama</option>
-                                            <option value="coquimbo">Región de Coquimbo</option>
-                                            <option value="valparaiso">Región de Valparaíso</option>
-                                            <option value="metropolitana">Región Metropolitana de Santiago</option>
-                                            <option value="ohiggins">Región del Libertador Gral. Bernardo O'Higgins</option>
-                                            <option value="maule">Región del Maule</option>
-                                            <option value="nuble">Región de Ñuble</option>
-                                            <option value="biobio">Región del Biobío</option>
-                                            <option value="araucania">Región de La Araucanía</option>
-                                            <option value="rios">Región de Los Ríos</option>
-                                            <option value="lagos">Región de Los Lagos</option>
-                                            <option value="aysen">Región de Aysén del Gral. Carlos Ibáñez del Campo</option>
-                                            <option value="magallanes">Región de Magallanes y de la Antártica Chilena</option>
-                                        </Form.Select>
-                                    </Form.Group>
                                     {mensaje && <Alert variant={tipoMensaje} role="status">{mensaje}</Alert>}
                                     <div className="carrito-botones-accion">
-                                        <Button id="btn-pagar" className="btn-pagar" onClick={finalizarCompra}>Proceder al Pago</Button>
+                                        <Button id="btn-pagar" className="btn-pagar" onClick={procederAlCheckout}>Proceder al Pago</Button>
                                         <a href="/catalogo" className="btn-seguir-comprando">Seguir comprando</a>
                                     </div>
                                 </Card.Body>

@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { MemoryRouter, useLocation } from 'react-router-dom';
+import { MemoryRouter, Route, Routes, useLocation } from 'react-router-dom';
 import Carrito from '../pages/Carrito';
 
 function RutaActual() {
@@ -33,14 +33,21 @@ describe('Carrito', () => {
         localStorage.setItem('carritoMangaVerse', JSON.stringify([
             { nombre: 'Berserk 01', precio: 10000, imagen: '/berserk.jpg', cantidad: 1 },
         ]));
-        render(<MemoryRouter><Carrito /><RutaActual /></MemoryRouter>);
+        render(
+            <MemoryRouter initialEntries={['/carrito']}>
+                <Routes>
+                    <Route path="/carrito" element={<Carrito />} />
+                    <Route path="/checkout" element={<h1>Finalizar compra</h1>} />
+                </Routes>
+                <RutaActual />
+            </MemoryRouter>,
+        );
 
         await usuario.click(screen.getByRole('button', { name: 'Proceder al Pago' }));
 
-        const pedidos = JSON.parse(localStorage.getItem('pedidosMangaVerse'));
-        expect(pedidos).toHaveLength(1);
-        expect(pedidos[0].total).toBe(13000);
-        expect(JSON.parse(localStorage.getItem('carritoMangaVerse'))).toEqual([]);
-        expect(screen.getByTestId('ruta-actual')).toHaveTextContent('/compra-exitosa');
+        expect(screen.getByRole('heading', { name: 'Finalizar compra' })).toBeInTheDocument();
+        expect(screen.getByTestId('ruta-actual')).toHaveTextContent('/checkout');
+        expect(localStorage.getItem('pedidosMangaVerse')).toBeNull();
+        expect(JSON.parse(localStorage.getItem('carritoMangaVerse'))).toHaveLength(1);
     });
 });

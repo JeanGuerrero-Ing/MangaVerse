@@ -1,0 +1,68 @@
+.checkout-seccion {
+    min-height: 65vh;
+    padding: 40px 20px;
+    background-color: #646464;
+}
+
+.checkout-card {
+    height: 100%;
+    border: 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.16);
+}
+
+.checkout-card h2 {
+    margin-bottom: 8px;
+    color: #222;
+}
+
+.checkout-card h3 {
+    margin: 20px 0 12px;
+    font-size: 1.15rem;
+}
+
+.checkout-ayuda {
+    color: #555;
+}
+
+.checkout-acciones {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.checkout-acciones a {
+    color: #313131;
+}
+
+.checkout-resumen-titulo {
+    border-top: 1px solid #ddd;
+    padding-top: 16px;
+}
+
+.checkout-productos {
+    list-style: none;
+    padding: 0;
+}
+
+.checkout-productos li {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 8px;
+}
+
+.checkout-resultado {
+    max-width: 640px;
+    margin: 40px auto;
+    padding: 32px;
+    border-radius: 10px;
+    background: white;
+    text-align: center;
+}
+
+.checkout-resultado-error h2 {
+    color: #b02a37;
+}

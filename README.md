@@ -15,6 +15,24 @@ npm install
 npm run dev
 ```
 
+## Ejecutar pruebas
+
+```bash
+npm run test
+```
+
+## Ejecutar prueba unitaria
+
+```bash
+npx vitest run "nombre.test.jsx"
+```
+
+## Ejecutar coverage
+
+```bash
+npm run coverage
+```
+
 Otros comandos disponibles:
 
 ```bash

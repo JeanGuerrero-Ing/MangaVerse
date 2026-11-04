@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../../base.css" />
     <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="../../theme.js"></script>
     <style type='text/css'>
         .coverage-summary .sorter {
             background-image: url(../../sort-arrow-sprite.png);
@@ -20,44 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        
-        <label class="theme-select quiet">
-            Theme
-            <select id="themeSelect" autocomplete="off">
-                <option value="light">Light</option>
-                <option value="dark">Dark</option>
-                <option value="legacy">Legacy</option>
-            </select>
-        </label>
-
         <h1><a href="../../index.html">All files</a> / <a href="index.html">src/pages</a> admin-dashboard.jsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/21</span>
+                <span class='fraction'>21/21</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>3/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/18</span>
+                <span class='fraction'>18/18</span>
             </div>
         
             
@@ -72,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -198,25 +187,25 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -281,7 +270,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -310,26 +299,26 @@ import '../css/estilos.css'
 import '../css/menu.css'
 import '../css/admin.css'
 &nbsp;
-function <span class="fstat-no" title="function not covered" >AdminDashboard() {</span>
-    const pedidos = <span class="cstat-no" title="statement not covered" >leerDatos('pedidosMangaVerse', []);</span>
-    const productos = <span class="cstat-no" title="statement not covered" >obtenerProductos()</span>;
-    const ventas = <span class="cstat-no" title="statement not covered" >pedidos.<span class="fstat-no" title="function not covered" >reduce((t</span>otal, pedido) =&gt; <span class="cstat-no" title="statement not covered" >total + Number(pedido.total || 0), 0</span>);</span>
-    const pendientes = <span class="cstat-no" title="statement not covered" >pedidos.<span class="fstat-no" title="function not covered" >filter((p</span>edido) =&gt; <span class="cstat-no" title="statement not covered" >pedido.estado !== 'Completado')</span>.length;</span>
-    const stock = <span class="cstat-no" title="statement not covered" >productos.<span class="fstat-no" title="function not covered" >reduce((t</span>otal, producto) =&gt; <span class="cstat-no" title="statement not covered" >total + Number(producto.stock || 0), 0</span>);</span>
-    const <span class="cstat-no" title="statement not covered" ><span class="fstat-no" title="function not covered" >descargarReporte = () =&gt; {</span></span>
-        const contenido = <span class="cstat-no" title="statement not covered" >crearReporteInventarioVentas(productos, pedidos);</span>
-        const archivo = <span class="cstat-no" title="statement not covered" >new Blob([contenido], { type: 'text/csv;charset=utf-8' });</span>
-        const url = <span class="cstat-no" title="statement not covered" >URL.createObjectURL(archivo);</span>
-        const enlace = <span class="cstat-no" title="statement not covered" >document.createElement('a');</span>
-<span class="cstat-no" title="statement not covered" >        enlace.href = url;</span>
-<span class="cstat-no" title="statement not covered" >        enlace.download = `reporte-inventario-ventas-${new Date().toISOString().slice(0, 10)}.csv`;</span>
-<span class="cstat-no" title="statement not covered" >        document.body.appendChild(enlace);</span>
-<span class="cstat-no" title="statement not covered" >        enlace.click();</span>
-<span class="cstat-no" title="statement not covered" >        enlace.remove();</span>
-<span class="cstat-no" title="statement not covered" >        URL.revokeObjectURL(url);</span>
+function AdminDashboard() {
+    const pedidos = leerDatos('pedidosMangaVerse', []);
+    const productos = obtenerProductos();
+    const ventas = pedidos.reduce((total, pedido) =&gt; total + Number(pedido.total || <span class="branch-1 cbranch-no" title="branch not covered" >0)</span>, 0);
+    const pendientes = pedidos.filter((pedido) =&gt; pedido.estado !== 'Completado').length;
+    const stock = productos.reduce((total, producto) =&gt; total + Number(producto.stock || <span class="branch-1 cbranch-no" title="branch not covered" >0)</span>, 0);
+    const descargarReporte = () =&gt; {
+        const contenido = crearReporteInventarioVentas(productos, pedidos);
+        const archivo = new Blob([contenido], { type: 'text/csv;charset=utf-8' });
+        const url = URL.createObjectURL(archivo);
+        const enlace = document.createElement('a');
+        enlace.href = url;
+        enlace.download = `reporte-inventario-ventas-${new Date().toISOString().slice(0, 10)}.csv`;
+        document.body.appendChild(enlace);
+        enlace.click();
+        enlace.remove();
+        URL.revokeObjectURL(url);
     };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return (</span>
+    return (
         &lt;&gt;
             &lt;main className="seccion-admin"&gt;
                 &lt;div className="contenedor-admin"&gt;
@@ -393,9 +382,9 @@ function <span class="fstat-no" title="function not covered" >AdminDashboard() {
                                     &lt;/tr&gt;
                                 &lt;/thead&gt;
                                 &lt;tbody&gt;
-                                    {productos.slice(0, 5).<span class="fstat-no" title="function not covered" >map((p</span>roducto) =&gt; (
-<span class="cstat-no" title="statement not covered" >                                        &lt;tr key={producto.id}&gt;</span>
-                                            &lt;td&gt;&lt;img src={producto.imagen || producto.img} alt={producto.titulo} className="img-tabla-manga" /&gt;&lt;/td&gt;
+                                    {productos.slice(0, 5).map((producto) =&gt; (
+                                        &lt;tr key={producto.id}&gt;
+                                            &lt;td&gt;&lt;img src={producto.imagen || <span class="branch-1 cbranch-no" title="branch not covered" >producto.img} a</span>lt={producto.titulo} className="img-tabla-manga" /&gt;&lt;/td&gt;
                                             &lt;td&gt;{producto.titulo}&lt;/td&gt;
                                             &lt;td&gt;&lt;PrecioProducto producto={producto} /&gt;&lt;/td&gt;
                                             &lt;td&gt;{producto.stock}&lt;/td&gt;
@@ -420,7 +409,7 @@ export default AdminDashboard</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-11-03T14:21:56.326Z
+                at 2026-11-04T22:04:54.766Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

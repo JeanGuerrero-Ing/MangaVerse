@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../../base.css" />
     <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="../../theme.js"></script>
     <style type='text/css'>
         .coverage-summary .sorter {
             background-image: url(../../sort-arrow-sprite.png);
@@ -20,44 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        
-        <label class="theme-select quiet">
-            Theme
-            <select id="themeSelect" autocomplete="off">
-                <option value="light">Light</option>
-                <option value="dark">Dark</option>
-                <option value="legacy">Legacy</option>
-            </select>
-        </label>
-
         <h1><a href="../../index.html">All files</a> / <a href="index.html">src/pages</a> admin-pedidos.jsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/4</span>
+                <span class='fraction'>4/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
@@ -72,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -149,11 +138,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -192,7 +179,9 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -218,10 +207,10 @@
 import '../css/menu.css'
 import '../css/admin.css'
 &nbsp;
-function <span class="fstat-no" title="function not covered" >AdminPedidos() {</span>
-    const pedidos = <span class="cstat-no" title="statement not covered" >leerDatos('pedidosMangaVerse', []);</span>
+function AdminPedidos() {
+    const pedidos = leerDatos('pedidosMangaVerse', []);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return (</span>
+    return (
         &lt;&gt;
             &lt;main className="seccion-admin"&gt;
                 &lt;div className="contenedor-admin"&gt;
@@ -261,8 +250,8 @@ function <span class="fstat-no" title="function not covered" >AdminPedidos() {</
                                     &lt;tbody&gt;
                                         {pedidos.length === 0 ? (
                                             &lt;tr&gt;&lt;td colSpan="5"&gt;Todavía no hay pedidos registrados.&lt;/td&gt;&lt;/tr&gt;
-                                        ) : pedidos.<span class="fstat-no" title="function not covered" >map((p</span>edido) =&gt; (
-<span class="cstat-no" title="statement not covered" >                                            &lt;tr key={pedido.id}&gt;</span>
+                                        ) : pedidos.map((pedido) =&gt; (
+                                            &lt;tr key={pedido.id}&gt;
                                                 &lt;td&gt;{pedido.id}&lt;/td&gt;
                                                 &lt;td&gt;{pedido.usuario}&lt;/td&gt;
                                                 &lt;td&gt;{pedido.region || 'No especificada'}&lt;/td&gt;
@@ -291,7 +280,7 @@ import CerrarSesion from '../componentes/CerrarSesion';</pre></td></tr></table><
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-11-03T14:21:56.326Z
+                at 2026-11-04T22:04:54.766Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

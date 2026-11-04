@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../../base.css" />
     <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="../../theme.js"></script>
     <style type='text/css'>
         .coverage-summary .sorter {
             background-image: url(../../sort-arrow-sprite.png);
@@ -20,44 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        
-        <label class="theme-select quiet">
-            Theme
-            <select id="themeSelect" autocomplete="off">
-                <option value="light">Light</option>
-                <option value="dark">Dark</option>
-                <option value="legacy">Legacy</option>
-            </select>
-        </label>
-
         <h1><a href="../../index.html">All files</a> / <a href="index.html">src/data</a> checkout.js</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/14</span>
+                <span class='fraction'>14/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/6</span>
+                <span class='fraction'>5/6</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/14</span>
+                <span class='fraction'>14/14</span>
             </div>
         
             
@@ -72,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -112,20 +101,18 @@
 <a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">29x</span>
+<span class="cline-any cline-yes">29x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">29x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -136,29 +123,31 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { guardarDatos, leerDatos, obtenerProductos } from './almacenamiento';
 &nbsp;
-export function <span class="fstat-no" title="function not covered" >registrarPedido({</span> carrito, subtotal, envio, descuento, region }) {
-    const productos = <span class="cstat-no" title="statement not covered" >obtenerProductos()</span>;
-    const productosActualizados = <span class="cstat-no" title="statement not covered" >productos.<span class="fstat-no" title="function not covered" >map((p</span>roducto) =&gt; {</span>
-        const comprado = <span class="cstat-no" title="statement not covered" >carrito.<span class="fstat-no" title="function not covered" >find((i</span>tem) =&gt;</span>
-<span class="cstat-no" title="statement not covered" >            item.nombre.toLocaleLowerCase('es') === producto.titulo.toLocaleLowerCase('es'),</span>
+export function registrarPedido({ carrito, subtotal, envio, descuento, region }) {
+    const productos = obtenerProductos();
+    const productosActualizados = productos.map((producto) =&gt; {
+        const comprado = carrito.find((item) =&gt;
+            item.nombre.toLocaleLowerCase('es') === producto.titulo.toLocaleLowerCase('es'),
         );
-<span class="cstat-no" title="statement not covered" >        return comprado</span>
-            ? { ...producto, stock: Math.max((producto.stock || 0) - comprado.cantidad, 0) }
+        return comprado
+            ? { ...producto, stock: Math.max((producto.stock || <span class="branch-1 cbranch-no" title="branch not covered" >0) - c</span>omprado.cantidad, 0) }
             : producto;
     });
-    const total = <span class="cstat-no" title="statement not covered" >Math.max(subtotal + envio - descuento, 0);</span>
-    const pedidos = <span class="cstat-no" title="statement not covered" >leerDatos('pedidosMangaVerse', []);</span>
-    const nuevoPedido = <span class="cstat-no" title="statement not covered" >{</span>
+    const total = Math.max(subtotal + envio - descuento, 0);
+    const pedidos = leerDatos('pedidosMangaVerse', []);
+    const nuevoPedido = {
         id: `#${pedidos.length}`,
         usuario: localStorage.getItem('usuarioMangaVerse') || 'Invitado',
         productos: carrito,
@@ -171,13 +160,13 @@ export function <span class="fstat-no" title="function not covered" >registrarPe
         estado: 'Completado',
     };
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    guardarDatos('productosMangaVerse', productosActualizados);</span>
-<span class="cstat-no" title="statement not covered" >    guardarDatos('pedidosMangaVerse', [...pedidos, nuevoPedido]);</span>
-<span class="cstat-no" title="statement not covered" >    guardarDatos('ultimoPedidoMangaVerse', nuevoPedido);</span>
-<span class="cstat-no" title="statement not covered" >    guardarDatos('carritoMangaVerse', []);</span>
-<span class="cstat-no" title="statement not covered" >    localStorage.removeItem('cuponActivoMangaVerse');</span>
+    guardarDatos('productosMangaVerse', productosActualizados);
+    guardarDatos('pedidosMangaVerse', [...pedidos, nuevoPedido]);
+    guardarDatos('ultimoPedidoMangaVerse', nuevoPedido);
+    guardarDatos('carritoMangaVerse', []);
+    localStorage.removeItem('cuponActivoMangaVerse');
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return nuevoPedido;</span>
+    return nuevoPedido;
 }
 &nbsp;</pre></td></tr></table></pre>
 
@@ -186,7 +175,7 @@ export function <span class="fstat-no" title="function not covered" >registrarPe
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-11-03T14:21:56.412Z
+                at 2026-11-04T22:04:54.875Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

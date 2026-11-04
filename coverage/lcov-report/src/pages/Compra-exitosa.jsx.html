@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../../base.css" />
     <link rel="shortcut icon" type="image/x-icon" href="../../favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="../../theme.js"></script>
     <style type='text/css'>
         .coverage-summary .sorter {
             background-image: url(../../sort-arrow-sprite.png);
@@ -20,44 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        
-        <label class="theme-select quiet">
-            Theme
-            <select id="themeSelect" autocomplete="off">
-                <option value="light">Light</option>
-                <option value="dark">Dark</option>
-                <option value="legacy">Legacy</option>
-            </select>
-        </label>
-
         <h1><a href="../../index.html">All files</a> / <a href="index.html">src/pages</a> Compra-exitosa.jsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">83.33% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/12</span>
+                <span class='fraction'>10/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>3/3</span>
             </div>
         
             
@@ -72,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -139,13 +128,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -154,7 +140,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -196,11 +185,11 @@ import '../css/menu.css'
 import '../css/carrito.css'
 import '../css/compra-exitosa.css'
 &nbsp;
-function <span class="fstat-no" title="function not covered" >CompraExitosa() {</span>
-    const pedido = <span class="cstat-no" title="statement not covered" >leerDatos('ultimoPedidoMangaVerse', null)</span>
+function CompraExitosa() {
+    const pedido = leerDatos('ultimoPedidoMangaVerse', null)
         || leerDatos('pedidosMangaVerse', []).at(-1);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return (</span>
+    return (
         &lt;&gt;
             &lt;main&gt;
                 &lt;section className="seccion-exito"&gt;
@@ -211,9 +200,9 @@ function <span class="fstat-no" title="function not covered" >CompraExitosa() {<
 &nbsp;
                     {/* Contenedor dinámico de miniaturas de productos */}
                     &lt;div id="exito-productos-container" className="exito-productos-grid"&gt;
-                        {pedido?.productos.<span class="fstat-no" title="function not covered" >map((p</span>roducto) =&gt; (
-<span class="cstat-no" title="statement not covered" >                            &lt;div className="exito-item-miniatura" key={producto.nombre}&gt;</span>
-                                &lt;img src={producto.imagen || producto.img} alt={producto.nombre || producto.titulo} /&gt;
+                        {pedido?.productos.map((producto) =&gt; (
+                            &lt;div className="exito-item-miniatura" key={producto.nombre}&gt;
+                                &lt;img src={producto.imagen || <span class="branch-1 cbranch-no" title="branch not covered" >producto.img} a</span>lt={producto.nombre || <span class="branch-1 cbranch-no" title="branch not covered" >producto.titulo} /&gt;</span>
                                 &lt;span className="exito-badge-cantidad"&gt;{producto.cantidad}&lt;/span&gt;
                             &lt;/div&gt;
                         ))}
@@ -255,7 +244,7 @@ export default CompraExitosa</pre></td></tr></table></pre>
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2026-11-03T14:21:56.412Z
+                at 2026-11-04T22:04:54.875Z
             </div>
         <script src="../../prettify.js"></script>
         <script>

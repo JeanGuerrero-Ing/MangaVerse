@@ -89,12 +89,12 @@ function Registro() {
                             </div>
 
                             <div className="campo-grupo">
-                                <label htmlFor="reg-password">Contraseña</label>
+                                <label htmlFor="reg-contrasena">Contraseña</label>
                                 <input type="password" id="reg-contrasena" name="password" placeholder="••••••••" required />
                             </div>
 
                             <div className="campo-grupo">
-                                <label htmlFor="reg-confirm-password">Confirmar contraseña</label>
+                                <label htmlFor="reg-confirmar-contrasena">Confirmar contraseña</label>
                                 <input type="password" id="reg-confirmar-contrasena" name="confirmar" placeholder="••••••••" required />
                             </div>
 

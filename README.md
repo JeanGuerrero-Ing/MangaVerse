@@ -2,8 +2,6 @@
 
 Tienda de manga de demostración creada con React y Vite. El proyecto es una SPA: las vistas se muestran mediante React Router y los datos de prueba se guardan en el navegador con `localStorage`.
 
-Para una explicación paso a paso de la estructura, rutas, Bootstrap, pruebas y acceso de demostración, consulta [GUIA-PARA-DESARROLLADORES.txt](./GUIA-PARA-DESARROLLADORES.txt).
-
 ## Requisitos
 
 - Node.js y npm
